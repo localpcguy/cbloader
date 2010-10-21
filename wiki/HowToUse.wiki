@@ -1,0 +1,78 @@
+#summary Describes how to use the application
+
+= Installation =
+
+Unzip CBLoader.exe and NativeDebugWrappers.dll into your Character Builder folder. This is C:\Program Files (x86)\Wizards of the Coast\Character Builder\CharBuilderFull_p on my machine. Be careful to place it in the CharBuilderFull_p folder.
+
+Create a shortcut to CBLoader.exe and place it in the start menu/desktop.
+
+= Usage =
+
+Simply run the CBLoader.exe. The first time it is created you will notice 3 new files in your Character Builder installation directory:
+
+* *combined.dnd40.main* Contains the unencrypted XML that contains all of the data used by Character Builder. This file will be automatically replaced every time the character builder data file is updated. You should not modify this directly, but might reference it often when building custom behavior.
+* *combined.dnd40.part* This is the location where you should place your house rules, it will never be overwritten. Any new rules elements added to this file will be shown in the character builder, in addition, if you create a rules element with the same 'internal-id' element as an element in the combined.dnd40.main file you will _replace_ the default version with your custom version.
+* *combined.dnd40* Contains the final data that is loaded by character builder when it is loaded. You should not modify this file directly. 
+
+= Examples =
+
+the following combined.dnd40.part file would replace magic missile with an identical spell named "Not Magic Missile". Note that the internal-id attribute is identical to the internal-id attribute used by magic missile in the .main file.
+{{{
+   <RulesElement name="NOT Magic Missile" type="Power" internal-id="ID_FMP_POWER_463" source="Player&apos;s Handbook" revision-date="8/27/2010 11:22:31 AM" >
+      <Category> ID_INTERNAL_CATEGORY_ATTACK,ID_INTERNAL_CATEGORY_AT-WILL,ID_INTERNAL_CATEGORY_AT-WILL_USAGE,ID_FMP_CLASS_9,ID_FMP_CLASS_FEATURE_845,ID_FMP_CATEGORY_31,ID_FMP_CATEGORY_69,ID_FMP_CATEGORY_8,ID_FMP_CATEGORY_25,ID_INTERNAL_CATEGORY_STANDARD_ACTION,1 </Category>
+      <Flavor> A glowing blue bolt of magical energy hurtles from your finger and unerringly strikes your target. </Flavor>
+      <specific name="Power Usage"> At-Will </specific>
+      <specific name="_SkillPower" />
+      <specific name="Display"> Wizard Attack 1 </specific>
+      <specific name="Keywords"> Arcane, Evocation, Force, Implement </specific>
+      <specific name="Action Type"> Standard action </specific>
+      <specific name="Attack Type"> Ranged 20 </specific>
+      <specific name="Target"> One creature </specific>
+      <specific name="Effect"> 2 + Intelligence modifier force damage.
+Level 11: 3 + Intelligence modifier force damage.
+Level 21: 5 + Intelligence modifier force damage. </specific>
+      <specific name="Special"> If the implement used with this power has an enhancement bonus, add that bonus to the damage. In addition, you can use this power as a ranged basic attack. </specific>
+      <specific name="_Associated Feats" />
+      <specific name="Class"> ID_FMP_CLASS_9 </specific>
+      <specific name="Level"> 1 </specific>
+      <specific name="Power Type"> Attack </specific>
+      <specific name="_BasicAttack"> Ranged </specific>
+      <rules>
+         <modify name="this" Field="_BasicAttack" value="Ranged" />
+      </rules>
+Every mage learns this spell as part of his or her arcane studies. What magic missile lacks in strength, it compensates for with unparalleled accuracy. Neither the heaviest armor nor the toughest hide offers any defense against this spell.
+   </RulesElement>
+}}}
+
+The following would create a _new_ at will for wizards named 'Overpowered Magic Missile' which does too much damage. Note that I have changed the value of the 'internal-id' attribute.
+
+{{{
+   <RulesElement name="Overpowered Magic Missile" type="Power" internal-id="ID_FMP_POWER_10000" source="Player&apos;s Handbook" revision-date="8/27/2010 11:22:31 AM" >
+      <Category> ID_INTERNAL_CATEGORY_ATTACK,ID_INTERNAL_CATEGORY_AT-WILL,ID_INTERNAL_CATEGORY_AT-WILL_USAGE,ID_FMP_CLASS_9,ID_FMP_CLASS_FEATURE_845,ID_FMP_CATEGORY_31,ID_FMP_CATEGORY_69,ID_FMP_CATEGORY_8,ID_FMP_CATEGORY_25,ID_INTERNAL_CATEGORY_STANDARD_ACTION,1 </Category>
+      <Flavor> A glowing blue bolt of magical energy hurtles from your finger and unerringly strikes your target. </Flavor>
+      <specific name="Power Usage"> At-Will </specific>
+      <specific name="_SkillPower" />
+      <specific name="Display"> Wizard Attack 1 </specific>
+      <specific name="Keywords"> Arcane, Evocation, Force, Implement </specific>
+      <specific name="Action Type"> Standard action </specific>
+      <specific name="Attack Type"> Ranged 20 </specific>
+      <specific name="Target"> One creature </specific>
+      <specific name="Effect"> 20 + Intelligence modifier force damage.
+Level 11: 30 + Intelligence modifier force damage.
+Level 21: 50 + Intelligence modifier force damage. </specific>
+      <specific name="Special"> If the implement used with this power has an enhancement bonus, add that bonus to the damage. In addition, you can use this power as a ranged basic attack. </specific>
+      <specific name="_Associated Feats" />
+      <specific name="Class"> ID_FMP_CLASS_9 </specific>
+      <specific name="Level"> 1 </specific>
+      <specific name="Power Type"> Attack </specific>
+      <specific name="_BasicAttack"> Ranged </specific>
+      <rules>
+         <modify name="this" Field="_BasicAttack" value="Ranged" />
+      </rules>
+Every mage learns this spell as part of his or her arcane studies. What magic missile lacks in strength, it compensates for with unparalleled accuracy. Neither the heaviest armor nor the toughest hide offers any defense against this spell.
+   </RulesElement>
+}}}
+
+Note that both of these could be placed in the same file. And that they must be wrapped in a root '<D20Rules game-system="D&amp;D4E">' element which should be generated by default when the .part file is created.  
+
+

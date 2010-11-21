@@ -2,17 +2,17 @@
 
 = Installation =
 
-Unzip CBLoader.exe and NativeDebugWrappers.dll into your Character Builder folder. This is C:\Program Files (x86)\Wizards of the Coast\Character Builder\CharBuilderFull_p on my machine. Be careful to place it in the CharBuilderFull_p folder.
+Unzip `CBLoader.exe` and `NativeDebugWrappers.dll` into your Character Builder folder. This is `C:\Program Files (x86)\Wizards of the Coast\Character Builder\CharBuilderFull_p` on my machine. Be careful to place it in the `CharBuilderFull_p` folder.
 
-Create a shortcut to CBLoader.exe and place it in the start menu/desktop.
+Create a shortcut to `CBLoader.exe` and place it in the start menu/desktop.
 
 = Usage =
 
-Simply run the CBLoader.exe. The first time it is created you will notice 3 new files in your Character Builder installation directory:
+Simply run the `CBLoader.exe`. The first time it is created you will notice 3 new files in your Character Builder installation directory:
 
-# *combined.dnd40.main* Contains the unencrypted XML that contains all of the data used by Character Builder. This file will be automatically replaced every time the character builder data file is updated. You should not modify this directly, but might reference it often when building custom behavior.
-# *combined.dnd40.part* This is the location where you should place your house rules, it will never be overwritten. Any new rules elements added to this file will be shown in the character builder, in addition, if you create a rules element with the same 'internal-id' element as an element in the combined.dnd40.main file you will _replace_ the default version with your custom version.
-# *combined.dnd40* Contains the final data that is loaded by character builder when it is loaded. You should not modify this file directly. 
+  # `combined.dnd40.main`: Contains the unencrypted XML that contains all of the data used by Character Builder. This file will be automatically replaced every time the character builder data file is updated. You should not modify this directly, but might reference it often when building custom behavior.
+  # `combined.dnd40.part`: This is the location where you should place your house rules, it will never be overwritten. Any new rules elements added to this file will be shown in the character builder, in addition, if you create a rules element with the same 'internal-id' element as an element in the combined.dnd40.main file you will _replace_ the default version with your custom version.
+  # `combined.dnd40`: Contains the final data that is loaded by character builder when it is loaded. You should not modify this file directly. 
 
 = Examples =
 

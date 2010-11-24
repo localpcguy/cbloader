@@ -2,7 +2,7 @@
 
 = Installation =
 
-Unzip `CBLoader.exe` and `NativeDebugWrappers.dll` and 'Custom' into your Character Builder folder. This is `C:\Program Files (x86)\Wizards of the Coast\Character Builder\CharBuilderFull_p` on my machine. Be careful to place it in the `CharBuilderFull_p` folder.
+Unzip `CBLoader.exe` and `NativeDebugWrappers.dll` and `Custom` into your Character Builder folder. This is `C:\Program Files (x86)\Wizards of the Coast\Character Builder\CharBuilderFull_p` on my machine. Be careful to place it in the `CharBuilderFull_p` folder.
 
 Create a shortcut to `CBLoader.exe` and place it in the start menu/desktop.
 
